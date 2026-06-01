@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCadastroEventos.Views.HomePage"
+             Title="HomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="Cadastro de Evento" HorizontalOptions="Center" FontSize="40" Margin="30"/>
+
+            <Border HorizontalOptions="Center">
+                <VerticalStackLayout>
+                    <Entry Placeholder="Digite o nome do evento..." />
+                    
+                    <Label Text="Data de início:" x:Name="DatePicker_checkin"/>
+                    <DatePicker/>
+
+                    <Label Text="Data de término:" x:Name="DatePicker_checkout"/>
+                    <DatePicker/>
+
+                    <HorizontalStackLayout>
+                        <Label x:Name="lbl_participantes"  Text="Participantes:"/>
+                        <Label Text="{Binding Value}" BindingContext="{x:Reference stepper_participantes}"/> <!--Binding do label com o stepper -->
+                        <Stepper x:Name="stepper_participantes" Maximum="1000" Minimum="0"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Local:"/>
+                    <Entry Placeholder="Insira o local do evento..."/>
+                </VerticalStackLayout>
+            </Border>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
