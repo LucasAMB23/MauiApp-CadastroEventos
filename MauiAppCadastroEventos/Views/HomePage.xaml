@@ -3,31 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppCadastroEventos.Views.HomePage"
              Title="HomePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             Background="{StaticResource Gray600}">
     <ScrollView>
-        <VerticalStackLayout>
-            <Label Text="Cadastro de Evento" HorizontalOptions="Center" FontSize="40" Margin="30"/>
+        <VerticalStackLayout Spacing="10" Padding="10">
+            <Label Text="Cadastro de Eventos" HorizontalOptions="Center" HorizontalTextAlignment="Center"  FontSize="40" Margin="30"/>
 
-            <Border HorizontalOptions="Center">
+            <Border HorizontalOptions="Center" Margin="10" Padding="20">
                 <VerticalStackLayout>
-                    <Entry Placeholder="Digite o nome do evento..." />
-                    
-                    <Label Text="Data de início:" x:Name="DatePicker_checkin"/>
-                    <DatePicker/>
+                    <Label Text="Nome do evento:" HorizontalTextAlignment="Center"/>
+                    <Entry Placeholder="Digite o nome do evento..." x:Name="txt_NomeEvento"  />
 
-                    <Label Text="Data de término:" x:Name="DatePicker_checkout"/>
-                    <DatePicker/>
+                    <Label Text="Data de início:" HorizontalTextAlignment="Center"/>
+                    <DatePicker x:Name="DatePicker_checkin" HorizontalOptions="Center" DateSelected="DatePicker_checkin_DateSelected"/>
 
-                    <HorizontalStackLayout>
+                    <Label Text="Data de término:" HorizontalTextAlignment="Center"/>
+                    <DatePicker x:Name="DatePicker_checkout" HorizontalOptions="Center"/>
+
+                    <HorizontalStackLayout Spacing="5" Margin="15">
                         <Label x:Name="lbl_participantes"  Text="Participantes:"/>
                         <Label Text="{Binding Value}" BindingContext="{x:Reference stepper_participantes}"/> <!--Binding do label com o stepper -->
-                        <Stepper x:Name="stepper_participantes" Maximum="1000" Minimum="0"/>
+                        <Stepper x:Name="stepper_participantes" Maximum="100" Minimum="0"/>
                     </HorizontalStackLayout>
-
-                    <Label Text="Local:"/>
+                    <Label Text="Local:" HorizontalTextAlignment="Center"/>
                     <Entry Placeholder="Insira o local do evento..."/>
+
+                    <Label Text="Custo por participante:" HorizontalTextAlignment="Center"/>
+                    <Entry Keyboard="Numeric" Placeholder="Custo por participante..." x:Name="CustoParticipante"/>
+
+
                 </VerticalStackLayout>
             </Border>
+
+            <Button Text="Avançar" HorizontalOptions="Center" Clicked="Button_Clicked"/>
 
 
         </VerticalStackLayout>
